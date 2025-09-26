@@ -1,0 +1,213 @@
+/* /*
+ * Anyess Global - Custom Stylesheet
+ */
+
+/* -------------------------
+   Variables & Basic Setup
+   ------------------------- */
+:root {
+    --primary-color: #0d6efd; /* Bootstrap Blue */
+    --secondary-color: #6c757d; /* Bootstrap Gray */
+    --light-gray: #f8f9fa;
+    --dark-blue: #0A2342;
+    --text-color: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.7;
+    padding-top: 70px; /* Offset for fixed navbar */
+}
+
+/* -------------------------
+   Typography & Links
+   ------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+.section-title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+section#about .section-title::after,
+section#contact .section-title::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0a58ca;
+}
+
+/* -------------------------
+   Navbar
+   ------------------------- */
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--dark-blue) !important;
+}
+
+.nav-link {
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+/* -------------------------
+   Hero Section
+   ------------------------- */
+.hero-section {
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(rgba(10, 35, 66, 0.8), rgba(10, 35, 66, 0.8)), url('https://via.placeholder.com/1920x1080/0A2342/FFFFFF?text=Network+Infrastructure') no-repeat center center/cover;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-section h1 {
+    animation: slideInUp 1s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+.hero-section p, .hero-section .btn {
+    animation: slideInUp 1s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+
+/* -------------------------
+   Products & Services Cards
+   ------------------------- */
+.service-card {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #EBF4FF;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover .icon-circle {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+
+/* -------------------------
+   Partners Section
+   ------------------------- */
+.partner-logo {
+    max-width: 150px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* -------------------------
+   Contact Section
+   ------------------------- */
+.contact-info a {
+    color: var(--text-color);
+}
+
+.icon-circle-sm {
+    width: 50px;
+    height: 50px;
+    background-color: #EBF4FF;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.form-control {
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: var(--primary-color);
+}
+
+
+/* -------------------------
+   Footer
+   ------------------------- */
+footer {
+    background-color: var(--dark-blue);
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #fff;
+}
+
+/* -------------------------
+   Animations
+   ------------------------- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
