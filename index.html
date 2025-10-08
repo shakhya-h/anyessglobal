@@ -19,12 +19,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .carousel-caption {
+            z-index: 2;
+        }
+
+        /* --- Animated Logo Carousel Styles --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 6)); } /* (logo width * number of original logos) */
+        }
+
+        .logo-slider {
+            overflow: hidden;
+            padding: 40px 0;
+            background: white;
+            position: relative;
+            width: 100%;
+        }
+
+        .logo-slider::before,
+        .logo-slider::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .logo-slider::before {
+            left: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+        }
+
+        .logo-slider::after {
+            right: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+        }
+
+        .logo-track {
+            display: flex;
+            width: calc(250px * 12); /* (logo width * number of logos * 2 for seamless loop) */
+            animation: scroll 40s linear infinite;
+        }
+        
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+
+        .logo-slide {
+            height: 120px; /* Increased size */
+            width: 250px; /* Increased size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+
+        .logo-slide img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-slide img:hover {
+             transform: scale(1.1);
+        }
+
+        /* Custom styles for product carousel controls */
+        #productCarousel {
+            position: relative;
+        }
+
+        #productCarousel .carousel-control-prev,
+        #productCarousel .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #productCarousel .carousel-control-prev {
+            left: 0; /* Corrected position */
+        }
+
+        #productCarousel .carousel-control-next {
+            right: 0; /* Corrected position */
+        }
+    </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#main-nav">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm" id="main-nav">
+        <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-sm" id="main-nav">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="#home">ANYESS GLOBAL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -39,8 +143,24 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#products">Products & Services</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Products & Services
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="products.html#connectivity">Connectivity (UL Group, IO modules)</a></li>
+                                <li><a class="dropdown-item" href="products.html#modular-wiring">Modular Wiring</a></li>
+                                <li><a class="dropdown-item" href="products.html#smps">SMPS (Switch Mode Power Supply)</a></li>
+                                <li><a class="dropdown-item" href="products.html#sensors">Sensors (Turck)</a></li>
+                                <li><a class="dropdown-item" href="products.html#encoders">Encoders (Kubler)</a></li>
+                                <li><a class="dropdown-item" href="products.html#gateways">Gateways (Hilsar, HMS)</a></li>
+                                <li><a class="dropdown-item" href="products.html#panel-accessories">Panel Accessories</a></li>
+                                <li><a class="dropdown-item" href="products.html#industrial-connectors">Industrial Connectors</a></li>
+                                <li><a class="dropdown-item" href="products.html#wireless-communication">Wireless Communication</a></li>
+                                <li><a class="dropdown-item" href="products.html#converters">Converters</a></li>
+                                <li><a class="dropdown-item" href="products.html#networking-hardware">Networking Hardware</a></li>
+                                <li><a class="dropdown-item" href="products.html#professional-services">Professional Services</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#partners">Partners</a>
@@ -55,20 +175,20 @@
     </header>
 
     <main>
-        <section id="home" class="hero-section text-center text-white">
+        <section id="home" class="hero-section text-center text-white position-relative">
             <div id="heroCarousel" class="carousel slide carousel-fade w-100 h-100" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
                 <div class="carousel-inner h-100">
                     <!-- Slide 1 -->
                     <div class="carousel-item active h-100">
-                        <img src="images/slide1.jpg" class="d-block w-100 h-100" alt="Connectivity">
+                        <img src="images/slide1.jpg" class="d-block w-100 h-100" alt="Connectivity" style="object-fit: cover;">
                     </div>
                     <!-- Slide 2 -->
                     <div class="carousel-item h-100">
-                        <img src="images/slide2.jpg" class="d-block w-100 h-100" alt="Networking">
+                        <img src="images/slide2.jpg" class="d-block w-100 h-100" alt="Networking" style="object-fit: cover;">
                     </div>
                     <!-- Slide 3 -->
                     <div class="carousel-item h-100">
-                        <img src="images/slide3.jpg" class="d-block w-100 h-100" alt="Growth">
+                        <img src="images/slide3.jpg" class="d-block w-100 h-100" alt="Growth" style="object-fit: cover;">
                     </div>
                 </div>
 
@@ -77,7 +197,7 @@
                     <h1 class="display-4 fw-bold">Empowering Connectivity. Driving Growth.</h1>
                     <p class="lead my-4">Your trusted partner for advanced telecom and networking solutions in India.
                     </p>
-                    <a href="#products" class="btn btn-primary btn-lg">Explore Our Solutions</a>
+                    <a href="products.html" class="btn btn-primary btn-lg">Explore Our Solutions</a>
                 </div>
             </div>
         </section>
@@ -123,47 +243,164 @@
                     <h2 class="section-title">Products & Services</h2>
                     <p class="text-muted">We provide a comprehensive range of telecom solutions.</p>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-3 mb-4">
-                        <div class="card h-100 text-center service-card">
-                            <div class="card-body">
-                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-network-wired fa-2x"></i></div>
-                                <h5 class="card-title fw-bold">Ethernet Switches</h5>
-                                <p class="card-text">High-performance, scalable switches for modern enterprise networks.
-                                </p>
+                <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#connectivity" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-network-wired fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Connectivity</h5>
+                                                <p class="card-text">High-performance industrial connectivity solutions.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#modular-wiring" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-plug fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Modular Wiring</h5>
+                                                <p class="card-text">Efficient and flexible modular wiring systems.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#smps" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-bolt fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">SMPS</h5>
+                                                <p class="card-text">Reliable switch mode power supplies.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#sensors" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-microchip fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Sensors</h5>
+                                                <p class="card-text">A wide range of sensors for industrial automation.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#encoders" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-cogs fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Encoders</h5>
+                                                <p class="card-text">High-precision encoders for motion control.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#gateways" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-server fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Gateways</h5>
+                                                <p class="card-text">Connect disparate industrial networks seamlessly.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#panel-accessories" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-box-open fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Panel Accessories</h5>
+                                                <p class="card-text">Lamps, controllers, and more for your panels.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#industrial-connectors" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-project-diagram fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Industrial Connectors</h5>
+                                                <p class="card-text">Robust connectors for stable communication.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#wireless-communication" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-wifi fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Wireless Communication</h5>
+                                                <p class="card-text">Industrial-grade wireless communication solutions.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#converters" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-exchange-alt fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Converters</h5>
+                                                <p class="card-text">Seamlessly convert between different network media.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#networking-hardware" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-hdd fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Networking Hardware</h5>
+                                                <p class="card-text">Switches and more for harsh industrial environments.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-4">
+                                    <a href="products.html#professional-services" class="text-decoration-none">
+                                        <div class="card h-100 text-center service-card">
+                                            <div class="card-body">
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-tools fa-2x"></i></div>
+                                                <h5 class="card-title fw-bold">Professional Services</h5>
+                                                <p class="card-text">Expert consultation, network design, and support.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 mb-4">
-                        <div class="card h-100 text-center service-card">
-                            <div class="card-body">
-                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-exchange-alt fa-2x"></i></div>
-                                <h5 class="card-title fw-bold">Media Converters</h5>
-                                <p class="card-text">Reliable solutions to seamlessly integrate fiber optic and copper
-                                    networks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 mb-4">
-                        <div class="card h-100 text-center service-card">
-                            <div class="card-body">
-                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-server fa-2x"></i></div>
-                                <h5 class="card-title fw-bold">Networking Hardware</h5>
-                                <p class="card-text">A wide range of hardware including routers, access points, and
-                                    more.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 mb-4">
-                        <div class="card h-100 text-center service-card">
-                            <div class="card-body">
-                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-tools fa-2x"></i></div>
-                                <h5 class="card-title fw-bold">Professional Services</h5>
-                                <p class="card-text">Expert consultation, network design, and technical support for your
-                                    projects.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -174,18 +411,21 @@
                     <h2 class="section-title">Our Valued Partners</h2>
                     <p class="text-muted">We collaborate with multinational brands to bring you the best technology.</p>
                 </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-6 col-md-4 col-lg-3 text-center p-4">
-                        <img src="https://via.placeholder.com/200x100/CCCCCC/FFFFFF?text=UL+Group" class="partner-logo"
-                            alt="UL Group Logo">
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 text-center p-4">
-                        <img src="https://via.placeholder.com/200x100/CCCCCC/FFFFFF?text=Brand+Two" class="partner-logo"
-                            alt="Partner Brand Two">
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 text-center p-4">
-                        <img src="https://via.placeholder.com/200x100/CCCCCC/FFFFFF?text=Brand+Three"
-                            class="partner-logo" alt="Partner Brand Three">
+                 <div class="logo-slider">
+                    <div class="logo-track">
+                        <div class="logo-slide"><img src="logos/turck.jpg" alt="Turck"></div>
+                        <div class="logo-slide"><img src="logos/meanwell.png" alt="Meanwell"></div>
+                        <div class="logo-slide"><img src="logos/profibus.png" alt="Profibus"></div>
+                        <div class="logo-slide"><img src="logos/ulgroup.png" alt="UL Group"></div>
+                        <div class="logo-slide"><img src="logos/Kubler.png" alt="Kubler"></div>
+                        <div class="logo-slide"><img src="logos/psautomation.jpg" alt="PS Automation"></div>
+                        <!-- Duplicate the logos for a seamless loop -->
+                        <div class="logo-slide"><img src="logos/turck.jpg" alt="Turck"></div>
+                        <div class="logo-slide"><img src="logos/meanwell.png" alt="Meanwell"></div>
+                        <div class="logo-slide"><img src="logos/profibus.png" alt="Profibus"></div>
+                        <div class="logo-slide"><img src="logos/ulgroup.png" alt="UL Group"></div>
+                        <div class="logo-slide"><img src="logos/Kubler.png" alt="Kubler"></div>
+                        <div class="logo-slide"><img src="logos/psautomation.jpg" alt="PS Automation"></div>
                     </div>
                 </div>
             </div>
@@ -266,7 +506,7 @@
                     <ul class="list-unstyled">
                         <li><a href="#home" class="footer-link">Home</a></li>
                         <li><a href="#about" class="footer-link">About Us</a></li>
-                        <li><a href="#products" class="footer-link">Products & Services</a></li>
+                        <li><a href="products.html" class="footer-link">Products & Services</a></li>
                         <li><a href="#contact" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
@@ -333,6 +573,11 @@
             ]
         });
     </script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
+
