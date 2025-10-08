@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Services | Anyess Global</title>
+    <meta name="description"
+        content="Explore a wide range of telecom and networking solutions from Anyess Global, including connectivity, modular wiring, SMPS, sensors, and more.">
+    <meta name="keywords"
+        content="Anyess Global, telecom equipment, industrial connectors, sensors, SMPS, gateways, encoders, modular wiring">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --page-header-bg: #ffffff;
+            --card-bg: #ffffff;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+            --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            --sidebar-link-color: #6c757d;
+            --sidebar-link-hover-bg: #e9ecef;
+            --sidebar-link-active-color: #0d6efd;
+            --sidebar-link-active-border: #0d6efd;
+            --section-heading-color: #343a40;
+            --card-border-color: #eee;
+        }
+
+        [data-bs-theme="dark"] {
+            --page-header-bg: #212529;
+            --card-bg: #2b3035;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            --sidebar-link-color: #adb5bd;
+            --sidebar-link-hover-bg: #343a40;
+            --sidebar-link-active-color: #589eff;
+            --sidebar-link-active-border: #589eff;
+            --section-heading-color: #dee2e6;
+            --card-border-color: #495057;
+
+            --bs-body-bg: #1a1a1a;
+            --bs-body-color: #dee2e6;
+            --bs-light-rgb: 43, 48, 53;
+            --bs-border-color: #495057;
+        }
+
+        /* Applying Variables and Styles */
+        body {
+            background-color: var(--bs-body-bg);
+        }
+
+        .page-header {
+            padding-top: 100px;
+            padding-bottom: 2rem;
+            background-color: var(--page-header-bg);
+            border-bottom: 1px solid var(--bs-border-color);
+        }
+
+        .breadcrumb { background-color: transparent; padding: 0; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .breadcrumb-item a { text-decoration: none; color: #0d6efd; }
+        .breadcrumb-item a:hover { text-decoration: underline; }
+        .breadcrumb-item.active { color: #6c757d; }
+        .page-title { color: var(--section-heading-color); font-weight: 700; }
+
+        .main-content {
+            padding-top: 2rem;
+        }
+
+        .sidebar-nav {
+            position: sticky;
+            top: 100px;
+            z-index: 1000;
+        }
+        
+        .sidebar-nav .nav-link {
+            color: var(--sidebar-link-color);
+            padding: 0.75rem 1.25rem;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .sidebar-nav .nav-link.active,
+        .sidebar-nav .nav-link:hover {
+            color: var(--sidebar-link-active-color);
+            background-color: var(--sidebar-link-hover-bg);
+            border-left-color: var(--sidebar-link-active-border);
+        }
+
+        .product-content-section {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            min-height: 100vh;
+        }
+
+        .section-heading {
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: var(--section-heading-color);
+        }
+        
+        .product-card {
+            background: var(--card-bg);
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .product-card-img-top {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--card-border-color);
+        }
+        
+        .product-card .card-body { text-align: left; }
+        .product-card .card-title { font-weight: 600; color: var(--bs-body-color); }
+        .product-card .card-text { color: #6c757d; font-size: 0.9rem; }
+        [data-bs-theme="dark"] .product-card .card-text { color: #adb5bd; }
+        .product-card .btn { border-radius: 8px; font-weight: 600; padding: 0.6rem 1rem; }
+        
+        .modal-header { border-bottom: none; }
+        .modal-title { font-weight: 700; }
+        .modal-body img { max-width: 100%; border-radius: 8px; }
+
+        #theme-toggle-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        // Set theme on initial load to prevent flash of unstyled content (FOUC)
+        (function() {
+            // Defaults to 'light' if no theme is found in localStorage
+            const storedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-bs-theme', storedTheme);
+        })();
+    </script>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#products-nav">
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-sm" id="main-nav">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">ANYESS GLOBAL</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#about">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Products & Services
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#connectivity">Connectivity (UL Group, IO modules)</a></li>
+                                <li><a class="dropdown-item" href="#modular-wiring">Modular Wiring</a></li>
+                                <li><a class="dropdown-item" href="#smps">SMPS (Switch Mode Power Supply)</a></li>
+                                <li><a class="dropdown-item" href="#sensors">Sensors (Turck)</a></li>
+                                <li><a class="dropdown-item" href="#encoders">Encoders (Kubler)</a></li>
+                                <li><a class="dropdown-item" href="#gateways">Gateways (Hilsar, HMS)</a></li>
+                                <li><a class="dropdown-item" href="#panel-accessories">Panel Accessories</a></li>
+                                <li><a class="dropdown-item" href="#industrial-connectors">Industrial Connectors</a></li>
+                                <li><a class="dropdown-item" href="#wireless-communication">Wireless Communication</a></li>
+                                <li><a class="dropdown-item" href="#converters">Converters</a></li>
+                                <li><a class="dropdown-item" href="#networking-hardware">Networking Hardware</a></li>
+                                <li><a class="dropdown-item" href="#professional-services">Professional Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#partners">Partners</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contact">Contact Us</a>
+                        </li>
+                    </ul>
+                     <!-- Theme Toggle Button -->
+                    <button class="btn btn-outline-secondary ms-2" id="theme-toggle-btn">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- New Innovative Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products & Services</li>
+                </ol>
+            </nav>
+            <h1 class="page-title">Our Products & Services</h1>
+            <p class="lead text-muted">Explore our comprehensive range of industrial automation and networking solutions.</p>
+        </div>
+    </section>
+
+    <div class="container main-content">
+        <div class="row">
+            <aside class="col-lg-3">
+                <nav id="products-nav" class="nav nav-pills flex-column sidebar-nav">
+                    <a class="nav-link" href="#connectivity">Connectivity</a>
+                    <a class="nav-link" href="#modular-wiring">Modular Wiring</a>
+                    <a class="nav-link" href="#smps">SMPS</a>
+                    <a class="nav-link" href="#sensors">Sensors</a>
+                    <a class="nav-link" href="#encoders">Encoders</a>
+                    <a class="nav-link" href="#gateways">Gateways</a>
+                    <a class="nav-link" href="#panel-accessories">Panel Accessories</a>
+                    <a class="nav-link" href="#industrial-connectors">Industrial Connectors</a>
+                    <a class="nav-link" href="#wireless-communication">Wireless Communication</a>
+                    <a class="nav-link" href="#converters">Converters</a>
+                    <a class="nav-link" href="#networking-hardware">Networking Hardware</a>
+                    <a class="nav-link" href="#professional-services">Professional Services</a>
+                </nav>
+            </aside>
+
+            <main class="col-lg-9">
+                
+                <section id="connectivity" class="product-content-section">
+                    <h2 class="section-heading">Connectivity (UL Group, IO modules)</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=UL+Product" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">UL Group Connector</h5>
+                                    <p class="card-text small flex-grow-1">High-quality, reliable connectors for demanding industrial applications.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="UL Group Connector" data-image="https://placehold.co/600x400/EBF4FF/808080?text=UL+Product" data-description="Detailed description about the UL Group Connector, including specs, use cases, and certifications.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=IO+Module" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">IO Modules (Turck)</h5>
+                                    <p class="card-text small flex-grow-1">Robust and versatile IO modules for decentralized automation solutions.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="https://placehold.co/600x400/EBF4FF/808080?text=IO+Module" data-description="Explore Turck's comprehensive portfolio of IO modules for any industrial environment.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="modular-wiring" class="product-content-section">
+                    <h2 class="section-heading">Modular Wiring</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Wiring+System" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Plug-and-Play Wiring</h5>
+                                    <p class="card-text small flex-grow-1">Efficient and flexible modular wiring systems to speed up installation time.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Plug-and-Play Wiring" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Wiring+System" data-description="More info on modular wiring.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="smps" class="product-content-section">
+                    <h2 class="section-heading">SMPS (Switch Mode Power Supply)</h2>
+                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                             <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=SMPS+Unit" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Industrial SMPS</h5>
+                                    <p class="card-text small flex-grow-1">Reliable and efficient power supplies for various industrial control systems.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Industrial SMPS" data-image="https://placehold.co/600x400/EBF4FF/808080?text=SMPS+Unit" data-description="More info on our SMPS offerings.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="sensors" class="product-content-section">
+                    <h2 class="section-heading">Sensors (Turck)</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Turck+Sensor" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Inductive Sensors</h5>
+                                    <p class="card-text small flex-grow-1">World-class inductive sensors from Turck for non-contact detection of metal objects.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Inductive Sensors" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Turck+Sensor" data-description="Details about Turck's inductive sensor lineup.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="encoders" class="product-content-section">
+                    <h2 class="section-heading">Encoders (Kubler)</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Kubler+Encoder" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Rotary Encoders</h5>
+                                    <p class="card-text small flex-grow-1">High-precision rotary encoders from Kubler for motion control applications.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Rotary Encoders" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Kubler+Encoder" data-description="Learn more about Kubler's advanced encoder technology.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="gateways" class="product-content-section">
+                    <h2 class="section-heading">Gateways (Hilsar, HMS)</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=HMS+Gateway" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Industrial Gateways</h5>
+                                    <p class="card-text small flex-grow-1">Connect disparate industrial networks seamlessly with gateways from HMS and Hilsar.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Industrial Gateways" data-image="https://placehold.co/600x400/EBF4FF/808080?text=HMS+Gateway" data-description="More information on our gateway solutions.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="panel-accessories" class="product-content-section">
+                    <h2 class="section-heading">Panel Accessories</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=LED+Lamp" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">LED Lamps</h5>
+                                    <p class="card-text small flex-grow-1">Bright and efficient LED lamps for control panels and enclosures.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="LED Lamps" data-image="https://placehold.co/600x400/EBF4FF/808080?text=LED+Lamp" data-description="Details about our panel lighting solutions.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Temp+Controller" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Temp/Humidity Controller</h5>
+                                    <p class="card-text small flex-grow-1">Maintain optimal conditions in your panels with our range of controllers.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Temp/Humidity Controller" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Temp+Controller" data-description="More info on climate control for panels.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="industrial-connectors" class="product-content-section">
+                    <h2 class="section-heading">Industrial Connectors</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Profibus" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Profibus Connectors</h5>
+                                    <p class="card-text small flex-grow-1">Reliable Profibus connectors for robust and stable fieldbus communication.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Profibus Connectors" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Profibus" data-description="Details about our range of Profibus connectors.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="wireless-communication" class="product-content-section">
+                    <h2 class="section-heading">Wireless Communication</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Wireless+IO" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Industrial Wireless IO</h5>
+                                    <p class="card-text small flex-grow-1">Cut the cables with our industrial-grade wireless communication solutions.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Industrial Wireless IO" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Wireless+IO" data-description="More info on wireless tech for automation.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="converters" class="product-content-section">
+                    <h2 class="section-heading">Converters</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Media+Converter" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Media Converters</h5>
+                                    <p class="card-text small flex-grow-1">Seamlessly convert between different network media like copper and fiber.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Media Converters" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Media+Converter" data-description="More info about our media converter options.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="networking-hardware" class="product-content-section">
+                    <h2 class="section-heading">Networking Hardware</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Switch" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Industrial Ethernet Switch</h5>
+                                    <p class="card-text small flex-grow-1">Managed and unmanaged switches designed for harsh industrial environments.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Industrial Ethernet Switch" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Switch" data-description="More info about industrial switches.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="professional-services" class="product-content-section">
+                    <h2 class="section-heading">Professional Services</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Consulting" class="card-img-top product-card-img-top" alt="Product Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Network Consulting</h5>
+                                    <p class="card-text small flex-grow-1">Expert consulting services to design and optimize your industrial network architecture.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Network Consulting" data-image="https://placehold.co/600x400/EBF4FF/808080?text=Consulting" data-description="Learn how our experts can help you build a better network.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modal-product-image" src="" alt="Product Image" class="img-fluid mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modal-product-title"></h3>
+                            <p id="modal-product-description"></p>
+                            <a href="#" class="btn btn-primary">Request Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container text-center text-md-start">
+            <p class="small text-white-50 mb-0">&copy; <span id="currentYear"></span> Anyess Global. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Script to update modal content
+        const productModal = document.getElementById('productModal');
+        productModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const title = button.getAttribute('data-title');
+            const description = button.getAttribute('data-description');
+            const image = button.getAttribute('data-image');
+
+            const modalTitle = productModal.querySelector('#modal-product-title');
+            const modalDescription = productModal.querySelector('#modal-product-description');
+            const modalImage = productModal.querySelector('#modal-product-image');
+
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            modalImage.src = image;
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // --- THEME TOGGLE SCRIPT ---
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlEl = document.documentElement;
+
+        const updateIcon = (theme) => {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        };
+
+        // Set initial icon state based on the theme set in the <head>
+        updateIcon(htmlEl.getAttribute('data-bs-theme'));
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlEl.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlEl.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+    </script>
+</body>
+
+</html>
+
