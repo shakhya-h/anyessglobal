@@ -117,40 +117,16 @@
             box-shadow: var(--card-hover-shadow);
         }
 
+        /* --- MODIFIED CODE BLOCK --- */
         .product-card-img-top {
             width: 100%;
             height: 180px;
-            object-fit: cover;
+            object-fit: contain; /* Ensures the whole image is visible */
+            background-color: #f8f9fa; /* Light background for any empty space */
+            padding: 0.5rem; /* Optional: Adds breathing room */
             border-bottom: 1px solid var(--card-border-color);
         }
-        
-        .product-card .card-body { text-align: left; }
-        .product-card .card-title { font-weight: 600; color: var(--bs-body-color); }
-        .product-card .card-text { color: #6c757d; font-size: 0.9rem; }
-        [data-bs-theme="dark"] .product-card .card-text { color: #adb5bd; }
-        .product-card .btn { border-radius: 8px; font-weight: 600; padding: 0.6rem 1rem; }
-        
-        .modal-header { border-bottom: none; }
-        .modal-title { font-weight: 700; }
-        .modal-body img { max-width: 100%; border-radius: 8px; }
-
-        #theme-toggle-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
     </style>
-    <script>
-        // Set theme on initial load to prevent flash of unstyled content (FOUC)
-        (function() {
-            // Defaults to 'light' if no theme is found in localStorage
-            const storedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-bs-theme', storedTheme);
-        })();
-    </script>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#products-nav">
@@ -158,7 +134,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-sm" id="main-nav">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="index.html">ANYESS GLOBAL</a>
+                <a class="navbar-brand fw-bold" href="index1.html">ANYESS GLOBAL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -197,16 +173,12 @@
                             <a class="nav-link" href="index.html#contact">Contact Us</a>
                         </li>
                     </ul>
-                     <!-- Theme Toggle Button -->
-                    <button class="btn btn-outline-secondary ms-2" id="theme-toggle-btn">
-                        <i class="fas fa-moon" id="theme-icon"></i>
-                    </button>
+                      
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- New Innovative Page Header -->
     <section class="page-header">
         <div class="container">
             <nav aria-label="breadcrumb">
@@ -246,12 +218,52 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=UL+Product" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="prodimg/unmanaged.jpg" class="card-img-top product-card-img-top" alt="Unmanaged Switch">
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">UL Group Connector</h5>
-                                    <p class="card-text small flex-grow-1">High-quality, reliable connectors for demanding industrial applications.</p>
+                                    <h5 class="card-title">Unmanaged Switch</h5>
+                                    <p class="card-text small flex-grow-1">Available in 5/8/16/24 Ports with/without MM/SM FO. Support auto-negotiation and auto-MDI/MDI-X. Rigid housing design. DIN-Rail and wall mounting enabled.</p>
                                     <div class="mt-4">
-                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="UL Group Connector" data-image="https://placehold.co/600x400/EBF4FF/808080?text=UL+Product" data-description="Detailed description about the UL Group Connector, including specs, use cases, and certifications.">Know More</button>
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Unmanaged Switch" data-image="prodimg/unmanaged.jpg" data-description="Available in 5/8/16/24 Ports with/without MM/SM FO. Support auto-negotiation and auto-MDI/MDI-X. Rigid housing design. DIN-Rail and wall mounting enabled.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/managed-3000-series.jpg" class="card-img-top product-card-img-top" alt="Unmanaged Switch">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Managed Switch 3000 Series</h5>
+                                    <p class="card-text small flex-grow-1">Available in 6/8/16/24 Ports with/without MM/SM FO. Supports fastest redundant ethernet ring protocols. Supports L2/L3 managed functionality. Available in DIN-Rail and Rack Mount</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Available in 6/8/16/24 Ports with/without MM/SM FO. Supports fastest redundant ethernet ring protocols. Supports L2/L3 managed functionality. Available in DIN-Rail and Rack Mount">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/lite-managed.jpg" class="card-img-top product-card-img-top" alt="Unmanaged Switch">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Lite Managed Switch</h5>
+                                    <p class="card-text small flex-grow-1">Available in 4/5/6 Ports with/without MM/SM FO. Supports ring redundancy protocol. Support auto-negotiation and auto-MDI/MDI-X. Rigid housing design</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Available in 4/5/6 Ports with/without MM/SM FO. Supports ring redundancy protocol. Support auto-negotiation and auto-MDI/MDI-X. Rigid housing design">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/smart-grid.jpg" class="card-img-top product-card-img-top" alt="Unmanaged Switch">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Smart Grid Certified Series</h5>
+                                    <p class="card-text small flex-grow-1">IEC 61850-3 & KEMA Certified Switches Modular designs provide flexibility on CU/FO ports. Compliant to cyber security standards. Available in DIN-Rail and Rack Mount.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Unmanaged Switch" data-image="prodimg/smart-grid.jpg" data-description="IEC 61850-3 & KEMA Certified Switches Modular designs provide flexibility on CU/FO ports. Compliant to cyber security standards. Available in DIN-Rail and Rack Mount.">Know More</button>
                                         <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
                                     </div>
                                 </div>
@@ -259,17 +271,99 @@
                         </div>
                          <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=IO+Module" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="prodimg/Poe-switch.jpg" class="card-img-top product-card-img-top" alt="IO Module">
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">IO Modules (Turck)</h5>
-                                    <p class="card-text small flex-grow-1">Robust and versatile IO modules for decentralized automation solutions.</p>
+                                    <h5 class="card-title">Industrial POE Switch</h5>
+                                    <p class="card-text small flex-grow-1">Available in 6/8/16/24 Ports with/without MM/SM FO. Supports variant POE standards of AF/AT/BT. Additional accessories like Injector & splitters available. Available in DIN-Rail and Rack Mount</p>
                                     <div class="mt-4">
-                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="https://placehold.co/600x400/EBF4FF/808080?text=IO+Module" data-description="Explore Turck's comprehensive portfolio of IO modules for any industrial environment.">Know More</button>
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="prodimg/Poe-switch.jpg" data-description="Available in 6/8/16/24 Ports with/without MM/SM FO. Supports variant POE standards of AF/AT/BT. Additional accessories like Injector & splitters available. Available in DIN-Rail and Rack Mount">Know More</button>
                                         <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                         <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/en50155.jpg" class="card-img-top product-card-img-top" alt="IO Module">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">EN50155 Railway Compartment Series</h5>
+                                    <p class="card-text small flex-grow-1">Available in 5/8/16 Ports with IRIS certificate. Compliant to IEC61375 & TSN. Available in POE variant / Bypass functionality. Options of IP-30/IP-54/IP-67.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="prodimg/en50155.jpg" data-description="Available in 5/8/16 Ports with IRIS certificate. Compliant to IEC61375 & TSN. Available in POE variant / Bypass functionality. Options of IP-30/IP-54/IP-67.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/media-converter.jpg" class="card-img-top product-card-img-top" alt="IO Module">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Industrial Media Converters</h5>
+                                    <p class="card-text small flex-grow-1">Available in 100M/1G Speeds. Supports auto-negotiation and auto-MDI/MDI-X. High reliability and rigid metal housing. DIN-Rail and wall mounting enabled.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="prodimg/media-converter.jpg" data-description="Available in 100M/1G Speeds. Supports auto-negotiation and auto-MDI/MDI-X. High reliability and rigid metal housing. DIN-Rail and wall mounting enabled.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/device-server.jpg" class="card-img-top product-card-img-top" alt="IO Module">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Industrial Device Server</h5>
+                                    <p class="card-text small flex-grow-1">Available in 1/2/4/8/16 serial ports. Operating Modes: Virtual Com, Serial Tunnel, TCP Server, TCP Client, UDP and Modbus Gateway . Support Modbus Gateway: Modbus TCP, Modbus RTU and Modbus ASCII.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="prodimg/dervice-server.jpg" data-description="Available in 1/2/4/8/16 serial ports. Operating Modes: Virtual Com, Serial Tunnel, TCP Server, TCP Client, UDP and Modbus Gateway . Support Modbus Gateway: Modbus TCP, Modbus RTU and Modbus ASCII.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                         <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/wireless-1.jpg" class="card-img-top product-card-img-top" alt="IO Module">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Industrial Wireless Series</h5>
+                                    <p class="card-text small flex-grow-1">Access points & Routers available in variant IP ratings. Supports a/b/g/n/ac wireless standards in AP. Option for Dual Sim in Routers.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="prodimg/wireless1.jpg" data-description="Access points & Routers available in variant IP ratings. Supports a/b/g/n/ac wireless standards in AP. Option for Dual Sim in Routers.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/iiot.jpg" class="card-img-top product-card-img-top" alt="IO Module">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Smart IIOT Gateway Series</h5>
+                                    <p class="card-text small flex-grow-1">Supports HTTP/MQTT/COAP protocols. Supports OT technologies like Modbus RTU/TCP. Redundant internet facility via LAN & SIM.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="prodimg/iiot.jpg" data-description="Supports HTTP/MQTT/COAP protocols. Supports OT technologies like Modbus RTU/TCP. Redundant internet facility via LAN & SIM.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100 product-card">
+                                <img src="prodimg/SMART-LIGHTNING-SERIES.jpg" class="card-img-top product-card-img-top" alt="IO Module">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Smart Lightning Serie </h5>
+                                    <p class="card-text small flex-grow-1">Available in NEMA/ZHAGA/BOX type solutions. Supports NBIO/LoRa/LoRaWAN/BLE. Smart Cloud platform for control & visualization. Proactive failure alert & remote management with control.</p>
+                                    <div class="mt-4">
+                                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-title="IO Modules (Turck)" data-image="prodimg/SMART-LIGHTNING-SERIES.jpg" data-description="Available in NEMA/ZHAGA/BOX type solutions. Supports NBIO/LoRa/LoRaWAN/BLE. Smart Cloud platform for control & visualization. Proactive failure alert & remote management with control.">Know More</button>
+                                        <a href="#" class="btn btn-primary btn-sm">Request Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </section>
 
@@ -278,7 +372,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Wiring+System" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Wiring+System" class="card-img-top product-card-img-top" alt="Wiring System">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Plug-and-Play Wiring</h5>
                                     <p class="card-text small flex-grow-1">Efficient and flexible modular wiring systems to speed up installation time.</p>
@@ -297,7 +391,7 @@
                      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                              <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=SMPS+Unit" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=SMPS+Unit" class="card-img-top product-card-img-top" alt="SMPS Unit">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Industrial SMPS</h5>
                                     <p class="card-text small flex-grow-1">Reliable and efficient power supplies for various industrial control systems.</p>
@@ -316,7 +410,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Turck+Sensor" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Turck+Sensor" class="card-img-top product-card-img-top" alt="Turck Sensor">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Inductive Sensors</h5>
                                     <p class="card-text small flex-grow-1">World-class inductive sensors from Turck for non-contact detection of metal objects.</p>
@@ -335,7 +429,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Kubler+Encoder" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Kubler+Encoder" class="card-img-top product-card-img-top" alt="Kubler Encoder">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Rotary Encoders</h5>
                                     <p class="card-text small flex-grow-1">High-precision rotary encoders from Kubler for motion control applications.</p>
@@ -354,7 +448,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=HMS+Gateway" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=HMS+Gateway" class="card-img-top product-card-img-top" alt="HMS Gateway">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Industrial Gateways</h5>
                                     <p class="card-text small flex-grow-1">Connect disparate industrial networks seamlessly with gateways from HMS and Hilsar.</p>
@@ -373,7 +467,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=LED+Lamp" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=LED+Lamp" class="card-img-top product-card-img-top" alt="LED Lamp">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">LED Lamps</h5>
                                     <p class="card-text small flex-grow-1">Bright and efficient LED lamps for control panels and enclosures.</p>
@@ -386,7 +480,7 @@
                         </div>
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Temp+Controller" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Temp+Controller" class="card-img-top product-card-img-top" alt="Temp Controller">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Temp/Humidity Controller</h5>
                                     <p class="card-text small flex-grow-1">Maintain optimal conditions in your panels with our range of controllers.</p>
@@ -405,7 +499,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Profibus" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Profibus" class="card-img-top product-card-img-top" alt="Profibus Connector">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Profibus Connectors</h5>
                                     <p class="card-text small flex-grow-1">Reliable Profibus connectors for robust and stable fieldbus communication.</p>
@@ -424,7 +518,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Wireless+IO" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Wireless+IO" class="card-img-top product-card-img-top" alt="Wireless IO">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Industrial Wireless IO</h5>
                                     <p class="card-text small flex-grow-1">Cut the cables with our industrial-grade wireless communication solutions.</p>
@@ -443,7 +537,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Media+Converter" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Media+Converter" class="card-img-top product-card-img-top" alt="Media Converter">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Media Converters</h5>
                                     <p class="card-text small flex-grow-1">Seamlessly convert between different network media like copper and fiber.</p>
@@ -462,7 +556,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Switch" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Switch" class="card-img-top product-card-img-top" alt="Ethernet Switch">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Industrial Ethernet Switch</h5>
                                     <p class="card-text small flex-grow-1">Managed and unmanaged switches designed for harsh industrial environments.</p>
@@ -481,7 +575,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                             <div class="card h-100 product-card">
-                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Consulting" class="card-img-top product-card-img-top" alt="Product Image">
+                                <img src="https://placehold.co/400x300/EBF4FF/808080?text=Consulting" class="card-img-top product-card-img-top" alt="Consulting Service">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">Network Consulting</h5>
                                     <p class="card-text small flex-grow-1">Expert consulting services to design and optimize your industrial network architecture.</p>
@@ -499,7 +593,6 @@
         </div>
     </div>
 
-    <!-- Product Details Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -581,4 +674,3 @@
 </body>
 
 </html>
-
