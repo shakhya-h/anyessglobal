@@ -30,15 +30,22 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
-        
+
         .carousel-caption {
             z-index: 2;
         }
 
         /* --- Animated Logo Carousel Styles --- */
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 6)); } /* (logo width * number of original logos) */
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-250px * 6));
+            }
+
+            /* (logo width * number of original logos) */
         }
 
         .logo-slider {
@@ -71,17 +78,20 @@
 
         .logo-track {
             display: flex;
-            width: calc(250px * 12); /* (logo width * number of logos * 2 for seamless loop) */
+            width: calc(250px * 12);
+            /* (logo width * number of logos * 2 for seamless loop) */
             animation: scroll 40s linear infinite;
         }
-        
+
         .logo-track:hover {
             animation-play-state: paused;
         }
 
         .logo-slide {
-            height: 120px; /* Increased size */
-            width: 250px; /* Increased size */
+            height: 120px;
+            /* Increased size */
+            width: 250px;
+            /* Increased size */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -95,9 +105,9 @@
             object-fit: contain;
             transition: transform 0.3s ease;
         }
-        
+
         .logo-slide img:hover {
-             transform: scale(1.1);
+            transform: scale(1.1);
         }
 
         /* Custom styles for product carousel controls */
@@ -116,11 +126,13 @@
         }
 
         #productCarousel .carousel-control-prev {
-            left: 0; /* Corrected position */
+            left: 0;
+            /* Corrected position */
         }
 
         #productCarousel .carousel-control-next {
-            right: 0; /* Corrected position */
+            right: 0;
+            /* Corrected position */
         }
     </style>
 </head>
@@ -144,22 +156,31 @@
                             <a class="nav-link" href="#about">About Us</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Products & Services
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="products.html#connectivity">Connectivity (UL Group, IO modules)</a></li>
+                                <li><a class="dropdown-item" href="products.html#connectivity">Connectivity (UL Group,
+                                        IO modules)</a></li>
                                 <li><a class="dropdown-item" href="products.html#modular-wiring">Modular Wiring</a></li>
-                                <li><a class="dropdown-item" href="products.html#smps">SMPS (Switch Mode Power Supply)</a></li>
+                                <li><a class="dropdown-item" href="products.html#smps">SMPS (Switch Mode Power
+                                        Supply)</a></li>
                                 <li><a class="dropdown-item" href="products.html#sensors">Sensors (Turck)</a></li>
                                 <li><a class="dropdown-item" href="products.html#encoders">Encoders (Kubler)</a></li>
-                                <li><a class="dropdown-item" href="products.html#gateways">Gateways (Hilsar, HMS)</a></li>
-                                <li><a class="dropdown-item" href="products.html#panel-accessories">Panel Accessories</a></li>
-                                <li><a class="dropdown-item" href="products.html#industrial-connectors">Industrial Connectors</a></li>
-                                <li><a class="dropdown-item" href="products.html#wireless-communication">Wireless Communication</a></li>
+                                <li><a class="dropdown-item" href="products.html#gateways">Gateways (Hilsar, HMS)</a>
+                                </li>
+                                <li><a class="dropdown-item" href="products.html#panel-accessories">Panel
+                                        Accessories</a></li>
+                                <li><a class="dropdown-item" href="products.html#industrial-connectors">Industrial
+                                        Connectors</a></li>
+                                <li><a class="dropdown-item" href="products.html#wireless-communication">Wireless
+                                        Communication</a></li>
                                 <li><a class="dropdown-item" href="products.html#converters">Converters</a></li>
-                                <li><a class="dropdown-item" href="products.html#networking-hardware">Networking Hardware</a></li>
-                                <li><a class="dropdown-item" href="products.html#professional-services">Professional Services</a></li>
+                                <li><a class="dropdown-item" href="products.html#networking-hardware">Networking
+                                        Hardware</a></li>
+                                <li><a class="dropdown-item" href="products.html#professional-services">Professional
+                                        Services</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -176,19 +197,23 @@
 
     <main>
         <section id="home" class="hero-section text-center text-white position-relative">
-            <div id="heroCarousel" class="carousel slide carousel-fade w-100 h-100" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
+            <div id="heroCarousel" class="carousel slide carousel-fade w-100 h-100" data-bs-ride="carousel"
+                data-bs-interval="5000" data-bs-pause="false">
                 <div class="carousel-inner h-100">
                     <!-- Slide 1 -->
                     <div class="carousel-item active h-100">
-                        <img src="images/slide1.jpg" class="d-block w-100 h-100" alt="Connectivity" style="object-fit: cover;">
+                        <img src="images/slide1.jpg" class="d-block w-100 h-100" alt="Connectivity"
+                            style="object-fit: cover;">
                     </div>
                     <!-- Slide 2 -->
                     <div class="carousel-item h-100">
-                        <img src="images/slide2.jpg" class="d-block w-100 h-100" alt="Networking" style="object-fit: cover;">
+                        <img src="images/slide2.jpg" class="d-block w-100 h-100" alt="Networking"
+                            style="object-fit: cover;">
                     </div>
                     <!-- Slide 3 -->
                     <div class="carousel-item h-100">
-                        <img src="images/slide3.jpg" class="d-block w-100 h-100" alt="Growth" style="object-fit: cover;">
+                        <img src="images/slide3.jpg" class="d-block w-100 h-100" alt="Growth"
+                            style="object-fit: cover;">
                     </div>
                 </div>
 
@@ -207,8 +232,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <img src="images/office.jpg"
-                            class="img-fluid rounded shadow" alt="Anyess Global Office">
+                        <img src="images/office.jpg" class="img-fluid rounded shadow" alt="Anyess Global Office">
                     </div>
                     <div class="col-lg-6">
                         <h2 class="section-title">About Anyess Global</h2>
@@ -252,9 +276,11 @@
                                     <a href="products.html#connectivity" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-network-wired fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i
+                                                        class="fas fa-network-wired fa-2x"></i></div>
                                                 <h5 class="card-title fw-bold">Connectivity</h5>
-                                                <p class="card-text">High-performance industrial connectivity solutions.</p>
+                                                <p class="card-text">High-performance industrial connectivity solutions.
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -263,7 +289,8 @@
                                     <a href="products.html#modular-wiring" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-plug fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-plug fa-2x"></i>
+                                                </div>
                                                 <h5 class="card-title fw-bold">Modular Wiring</h5>
                                                 <p class="card-text">Efficient and flexible modular wiring systems.</p>
                                             </div>
@@ -274,7 +301,8 @@
                                     <a href="products.html#smps" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-bolt fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-bolt fa-2x"></i>
+                                                </div>
                                                 <h5 class="card-title fw-bold">SMPS</h5>
                                                 <p class="card-text">Reliable switch mode power supplies.</p>
                                             </div>
@@ -285,9 +313,11 @@
                                     <a href="products.html#sensors" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-microchip fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i
+                                                        class="fas fa-microchip fa-2x"></i></div>
                                                 <h5 class="card-title fw-bold">Sensors</h5>
-                                                <p class="card-text">A wide range of sensors for industrial automation.</p>
+                                                <p class="card-text">A wide range of sensors for industrial automation.
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -301,7 +331,8 @@
                                     <a href="products.html#encoders" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-cogs fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-cogs fa-2x"></i>
+                                                </div>
                                                 <h5 class="card-title fw-bold">Encoders</h5>
                                                 <p class="card-text">High-precision encoders for motion control.</p>
                                             </div>
@@ -312,9 +343,11 @@
                                     <a href="products.html#gateways" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-server fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i
+                                                        class="fas fa-server fa-2x"></i></div>
                                                 <h5 class="card-title fw-bold">Gateways</h5>
-                                                <p class="card-text">Connect disparate industrial networks seamlessly.</p>
+                                                <p class="card-text">Connect disparate industrial networks seamlessly.
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -323,7 +356,8 @@
                                     <a href="products.html#panel-accessories" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-box-open fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i
+                                                        class="fas fa-box-open fa-2x"></i></div>
                                                 <h5 class="card-title fw-bold">Panel Accessories</h5>
                                                 <p class="card-text">Lamps, controllers, and more for your panels.</p>
                                             </div>
@@ -334,7 +368,8 @@
                                     <a href="products.html#industrial-connectors" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-project-diagram fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i
+                                                        class="fas fa-project-diagram fa-2x"></i></div>
                                                 <h5 class="card-title fw-bold">Industrial Connectors</h5>
                                                 <p class="card-text">Robust connectors for stable communication.</p>
                                             </div>
@@ -350,9 +385,11 @@
                                     <a href="products.html#wireless-communication" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-wifi fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-wifi fa-2x"></i>
+                                                </div>
                                                 <h5 class="card-title fw-bold">Wireless Communication</h5>
-                                                <p class="card-text">Industrial-grade wireless communication solutions.</p>
+                                                <p class="card-text">Industrial-grade wireless communication solutions.
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -361,9 +398,11 @@
                                     <a href="products.html#converters" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-exchange-alt fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i
+                                                        class="fas fa-exchange-alt fa-2x"></i></div>
                                                 <h5 class="card-title fw-bold">Converters</h5>
-                                                <p class="card-text">Seamlessly convert between different network media.</p>
+                                                <p class="card-text">Seamlessly convert between different network media.
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -372,9 +411,11 @@
                                     <a href="products.html#networking-hardware" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-hdd fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-hdd fa-2x"></i>
+                                                </div>
                                                 <h5 class="card-title fw-bold">Networking Hardware</h5>
-                                                <p class="card-text">Switches and more for harsh industrial environments.</p>
+                                                <p class="card-text">Switches and more for harsh industrial
+                                                    environments.</p>
                                             </div>
                                         </div>
                                     </a>
@@ -383,9 +424,11 @@
                                     <a href="products.html#professional-services" class="text-decoration-none">
                                         <div class="card h-100 text-center service-card">
                                             <div class="card-body">
-                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-tools fa-2x"></i></div>
+                                                <div class="icon-circle mx-auto mb-3"><i class="fas fa-tools fa-2x"></i>
+                                                </div>
                                                 <h5 class="card-title fw-bold">Professional Services</h5>
-                                                <p class="card-text">Expert consultation, network design, and support.</p>
+                                                <p class="card-text">Expert consultation, network design, and support.
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -393,11 +436,13 @@
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -411,7 +456,7 @@
                     <h2 class="section-title">Our Valued Partners</h2>
                     <p class="text-muted">We collaborate with multinational brands to bring you the best technology.</p>
                 </div>
-                 <div class="logo-slider">
+                <div class="logo-slider">
                     <div class="logo-track">
                         <div class="logo-slide"><img src="logos/turck.jpg" alt="Turck"></div>
                         <div class="logo-slide"><img src="logos/meanwell.png" alt="Meanwell"></div>
@@ -465,20 +510,27 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <form id="contactForm">
+                        <form id="contactForm" action="https://formspree.io/f/xkgqpzkz" method="POST">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                    <label for="contact-name" class="form-label visually-hidden">Your Name</label>
+                                    <input id="contact-name" type="text" name="name" class="form-control"
+                                        placeholder="Your Name" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                    <label for="contact-email" class="form-label visually-hidden">Your Email</label>
+                                    <input id="contact-email" type="email" name="email" class="form-control"
+                                        placeholder="Your Email" required>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <input type="text" class="form-control" placeholder="Subject" required>
+                                    <label for="contact-subject" class="form-label visually-hidden">Subject</label>
+                                    <input id="contact-subject" type="text" name="subject" class="form-control"
+                                        placeholder="Subject" required>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <textarea class="form-control" rows="5" placeholder="Your Message"
-                                        required></textarea>
+                                    <label for="contact-message" class="form-label visually-hidden">Your Message</label>
+                                    <textarea id="contact-message" name="message" class="form-control" rows="5"
+                                        placeholder="Your Message" required></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary w-100">Send Inquiry</button>
@@ -580,4 +632,3 @@
 </body>
 
 </html>
-
