@@ -34,8 +34,7 @@
         .carousel-caption {
             z-index: 2;
         }
-
-        /* --- Animated Logo Carousel Styles --- */
+        
         @keyframes scroll {
             0% {
                 transform: translateX(0);
@@ -45,7 +44,6 @@
                 transform: translateX(calc(-250px * 6));
             }
 
-            /* (logo width * number of original logos) */
         }
 
         .logo-slider {
@@ -79,7 +77,6 @@
         .logo-track {
             display: flex;
             width: calc(250px * 12);
-            /* (logo width * number of logos * 2 for seamless loop) */
             animation: scroll 40s linear infinite;
         }
 
@@ -89,9 +86,9 @@
 
         .logo-slide {
             height: 120px;
-            /* Increased size */
+
             width: 250px;
-            /* Increased size */
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,7 +107,7 @@
             transform: scale(1.1);
         }
 
-        /* Custom styles for product carousel controls */
+
         #productCarousel {
             position: relative;
         }
@@ -127,12 +124,12 @@
 
         #productCarousel .carousel-control-prev {
             left: 0;
-            /* Corrected position */
+
         }
 
         #productCarousel .carousel-control-next {
             right: 0;
-            /* Corrected position */
+
         }
     </style>
 </head>
@@ -200,24 +197,23 @@
             <div id="heroCarousel" class="carousel slide carousel-fade w-100 h-100" data-bs-ride="carousel"
                 data-bs-interval="5000" data-bs-pause="false">
                 <div class="carousel-inner h-100">
-                    <!-- Slide 1 -->
+
                     <div class="carousel-item active h-100">
                         <img src="images/slide1.jpg" class="d-block w-100 h-100" alt="Connectivity"
                             style="object-fit: cover;">
                     </div>
-                    <!-- Slide 2 -->
+
                     <div class="carousel-item h-100">
                         <img src="images/slide2.jpg" class="d-block w-100 h-100" alt="Networking"
                             style="object-fit: cover;">
                     </div>
-                    <!-- Slide 3 -->
+
                     <div class="carousel-item h-100">
                         <img src="images/slide3.jpg" class="d-block w-100 h-100" alt="Growth"
                             style="object-fit: cover;">
                     </div>
                 </div>
 
-                <!-- Overlay Text -->
                 <div class="carousel-caption d-flex flex-column justify-content-center h-100">
                     <h1 class="display-4 fw-bold">Empowering Connectivity. Driving Growth.</h1>
                     <p class="lead my-4">Your trusted partner for advanced telecom and networking solutions in India.
@@ -464,7 +460,7 @@
                         <div class="logo-slide"><img src="logos/ulgroup.png" alt="UL Group"></div>
                         <div class="logo-slide"><img src="logos/Kubler.png" alt="Kubler"></div>
                         <div class="logo-slide"><img src="logos/psautomation.jpg" alt="PS Automation"></div>
-                        <!-- Duplicate the logos for a seamless loop -->
+
                         <div class="logo-slide"><img src="logos/turck.jpg" alt="Turck"></div>
                         <div class="logo-slide"><img src="logos/meanwell.png" alt="Meanwell"></div>
                         <div class="logo-slide"><img src="logos/profibus.png" alt="Profibus"></div>
@@ -568,7 +564,7 @@
                         <i class="fas fa-map-marker-alt me-2"></i>7 Goala Para Road, Belgharia, Kolkata - 700056
                     </p>
                     <p class="text-white-50 small mb-1">
-                        <i class="fas fa-id-card me-2"></i>GST: [Your GST Number Here]
+                        <i class="fas fa-id-card me-2"></i>GST: 
                     </p>
                 </div>
             </div>
@@ -583,10 +579,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Set current year in footer
+
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // --- SCRIPT FOR CONTACT FORM SUBMISSION ---
+
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('form-message');
 
@@ -625,7 +621,7 @@
                 }).catch(error => {
                     formMessage.innerHTML = '<div class="alert alert-danger">Oops! There was a network error. Please try again.</div>';
                 }).finally(() => {
-                    // Re-enable button
+
                     submitButton.disabled = false;
                     submitButton.textContent = 'Send Inquiry';
                 });
@@ -635,4 +631,5 @@
 </body>
 
 </html>
+
 
