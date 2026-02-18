@@ -74,14 +74,156 @@
 //         }
 
 //         let mainContentHTML = '';
-document.addEventListener("DOMContentLoaded", () => {
-    // 🚨 UPDATE THIS URL:
-    // Local Testing: 'http://localhost:8080/api/public'
-    // Production (Railway): 'https://your-app-name.up.railway.app/api/public'
-    const API_BASE = "http://localhost:8080/api/public";
+// document.addEventListener("DOMContentLoaded", () => {
+//     // 🚨 UPDATE THIS URL:
+//     // Local Testing: 'http://localhost:8080/api/public'
+//     // Production (Railway): 'https://your-app-name.up.railway.app/api/public'
+//     const API_BASE = "http://localhost:8080/api/public";
 
-    // Initialize
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
+//     // Initialize
+//     document.getElementById("currentYear").textContent = new Date().getFullYear();
+//     fetchAndRenderCatalog();
+
+//     // --- Main Logic ---
+//     async function fetchAndRenderCatalog() {
+//         const contentArea = document.getElementById("dynamic-product-container");
+//         const sidebarNav = document.getElementById("products-nav");
+
+//         try {
+//             // 1. Fetch Data
+//             const [catRes, prodRes] = await Promise.all([
+//                 fetch(`${API_BASE}/categories`),
+//                 fetch(`${API_BASE}/products`)
+//             ]);
+
+//             if (!catRes.ok || !prodRes.ok) throw new Error("Backend connection failed");
+
+//             const categories = await catRes.json();
+//             const products = await prodRes.json();
+
+//             // 2. Clear Loading State
+//             contentArea.innerHTML = "";
+//             sidebarNav.innerHTML = "";
+
+//             if (categories.length === 0) {
+//                 contentArea.innerHTML = `<div class="alert alert-warning">No categories found.</div>`;
+//                 return;
+//             }
+
+//             // 3. Build HTML for each Category
+//             categories.forEach(category => {
+//                 // A. Create Slug (e.g. "Modular Wiring" -> "modular-wiring")
+//                 const slug = category.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+//                 // B. Filter products for this category
+//                 // (Assuming your Product entity has a 'category' object with an 'id')
+//                 const categoryProducts = products.filter(p => p.category && p.category.id === category.id);
+
+//                 // Skip empty categories
+//                 if (categoryProducts.length === 0) return;
+
+//                 // C. Add Sidebar Link
+//                 const navLink = document.createElement("a");
+//                 navLink.className = "nav-link";
+//                 navLink.href = `#${slug}`;
+//                 navLink.innerText = category.name;
+//                 sidebarNav.appendChild(navLink);
+
+//                 // D. Build Product Cards HTML
+//                 const cardsHtml = categoryProducts.map(product => {
+//                     const imgUrl = product.imageUrl || 'https://placehold.co/400x300?text=No+Image';
+//                     const desc = product.description || '';
+//                     const shortDesc = desc.length > 90 ? desc.substring(0, 90) + "..." : desc;
+
+//                     // Note: We store data in data-attributes for the modal to read later
+//                     return `
+//                         <div class="col">
+//                             <div class="card h-100 product-card">
+//                                 <img src="${imgUrl}" class="card-img-top product-card-img-top" alt="${product.name}">
+//                                 <div class="card-body d-flex flex-column">
+//                                     <h5 class="card-title">${product.name}</h5>
+//                                     <p class="card-text small flex-grow-1 text-muted">${shortDesc}</p>
+//                                     <div class="mt-3">
+//                                         <button class="btn btn-outline-secondary btn-sm" 
+//                                             data-bs-toggle="modal" 
+//                                             data-bs-target="#productModal"
+//                                             data-title="${product.name}"
+//                                             data-desc="${desc}"
+//                                             data-img="${imgUrl}">
+//                                             Know More
+//                                         </button>
+//                                         <a href="index.html#contact" class="btn btn-primary btn-sm">Request Quote</a>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     `;
+//                 }).join('');
+
+//                 // E. Assemble the Section
+//                 const sectionHtml = `
+//                     <section id="${slug}" class="product-content-section mb-5" style="padding-top: 20px;">
+//                         <h2 class="section-heading border-bottom pb-2 mb-4">${category.name}</h2>
+//                         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+//                             ${cardsHtml}
+//                         </div>
+//                     </section>
+//                 `;
+
+//                 contentArea.insertAdjacentHTML('beforeend', sectionHtml);
+//             });
+
+//             // 4. Refresh ScrollSpy (Important for sidebar highlighting)
+//             refreshScrollSpy();
+
+//         } catch (error) {
+//             console.error("Error:", error);
+//             contentArea.innerHTML = `
+//                 <div class="alert alert-danger text-center">
+//                     <h4>Unable to load products</h4>
+//                     <p>Please ensure the backend is running at ${API_BASE}</p>
+//                     <small>${error.message}</small>
+//                 </div>`;
+//         }
+//     }
+
+//     // --- Helper: Modal Handler ---
+//     const productModal = document.getElementById('productModal');
+//     if (productModal) {
+//         productModal.addEventListener('show.bs.modal', function (event) {
+//             // Button that triggered the modal
+//             const button = event.relatedTarget;
+            
+//             // Extract info from data-* attributes
+//             const title = button.getAttribute('data-title');
+//             const desc = button.getAttribute('data-desc');
+//             const img = button.getAttribute('data-img');
+
+//             // Update the modal's content
+//             productModal.querySelector('#modal-product-name').textContent = title;
+//             productModal.querySelector('#modal-product-description').textContent = desc || "No details available.";
+//             productModal.querySelector('#modal-product-image').src = img;
+//         });
+//     }
+
+//     // --- Helper: Refresh Bootstrap ScrollSpy ---
+//     function refreshScrollSpy() {
+//         const dataSpyEl = document.querySelector('[data-bs-spy="scroll"]');
+//         if (dataSpyEl && bootstrap.ScrollSpy) {
+//             const spy = bootstrap.ScrollSpy.getInstance(dataSpyEl);
+//             if (spy) spy.refresh();
+//         }
+//     }
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 🚨 UPDATE THIS URL FOR PRODUCTION
+    const API_BASE = "http://localhost:8080/api/public"; 
+
+    // 1. Initialize
+    const currentYearEl = document.getElementById("currentYear");
+    if(currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+    
     fetchAndRenderCatalog();
 
     // --- Main Logic ---
@@ -89,8 +231,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const contentArea = document.getElementById("dynamic-product-container");
         const sidebarNav = document.getElementById("products-nav");
 
+        // Safety check
+        if (!contentArea || !sidebarNav) return;
+
         try {
-            // 1. Fetch Data
+            // 2. Fetch Data
             const [catRes, prodRes] = await Promise.all([
                 fetch(`${API_BASE}/categories`),
                 fetch(`${API_BASE}/products`)
@@ -101,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const categories = await catRes.json();
             const products = await prodRes.json();
 
-            // 2. Clear Loading State
+            // 3. Clear Loading State
             contentArea.innerHTML = "";
             sidebarNav.innerHTML = "";
 
@@ -110,47 +255,47 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // 3. Build HTML for each Category
+            // 4. Build Content
             categories.forEach(category => {
-                // A. Create Slug (e.g. "Modular Wiring" -> "modular-wiring")
+                // Create Slug
                 const slug = category.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-                // B. Filter products for this category
-                // (Assuming your Product entity has a 'category' object with an 'id')
+                // Filter products
                 const categoryProducts = products.filter(p => p.category && p.category.id === category.id);
-
-                // Skip empty categories
                 if (categoryProducts.length === 0) return;
 
-                // C. Add Sidebar Link
+                // A. Add Sidebar Link
                 const navLink = document.createElement("a");
                 navLink.className = "nav-link";
                 navLink.href = `#${slug}`;
                 navLink.innerText = category.name;
                 sidebarNav.appendChild(navLink);
 
-                // D. Build Product Cards HTML
+                // B. Generate Cards with Uniform Design
                 const cardsHtml = categoryProducts.map(product => {
                     const imgUrl = product.imageUrl || 'https://placehold.co/400x300?text=No+Image';
                     const desc = product.description || '';
                     const shortDesc = desc.length > 90 ? desc.substring(0, 90) + "..." : desc;
 
-                    // Note: We store data in data-attributes for the modal to read later
                     return `
                         <div class="col">
-                            <div class="card h-100 product-card">
-                                <img src="${imgUrl}" class="card-img-top product-card-img-top" alt="${product.name}">
+                            <div class="card h-100 product-card shadow-sm border-0">
+                                <div class="card-img-wrapper" style="height: 220px; padding: 20px; display: flex; align-items: center; justify-content: center; background-color: #fff; border-bottom: 1px solid #f0f0f0;">
+                                    <img src="${imgUrl}" alt="${product.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                                </div>
+                                
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">${product.name}</h5>
-                                    <p class="card-text small flex-grow-1 text-muted">${shortDesc}</p>
-                                    <div class="mt-3">
-                                        <button class="btn btn-outline-secondary btn-sm" 
+                                    <h5 class="card-title fw-bold text-dark">${product.name}</h5>
+                                    <p class="card-text small text-muted flex-grow-1">${shortDesc}</p>
+                                    
+                                    <div class="d-grid gap-2 mt-3">
+                                        <button class="btn btn-outline-primary btn-sm" 
                                             data-bs-toggle="modal" 
                                             data-bs-target="#productModal"
                                             data-title="${product.name}"
                                             data-desc="${desc}"
                                             data-img="${imgUrl}">
-                                            Know More
+                                            View Details
                                         </button>
                                         <a href="index.html#contact" class="btn btn-primary btn-sm">Request Quote</a>
                                     </div>
@@ -160,11 +305,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
                 }).join('');
 
-                // E. Assemble the Section
+                // C. Assemble Section
                 const sectionHtml = `
                     <section id="${slug}" class="product-content-section mb-5" style="padding-top: 20px;">
-                        <h2 class="section-heading border-bottom pb-2 mb-4">${category.name}</h2>
-                        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="d-flex align-items-center mb-4 border-bottom pb-2">
+                            <h2 class="section-heading mb-0 text-primary">${category.name}</h2>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                             ${cardsHtml}
                         </div>
                     </section>
@@ -173,45 +320,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 contentArea.insertAdjacentHTML('beforeend', sectionHtml);
             });
 
-            // 4. Refresh ScrollSpy (Important for sidebar highlighting)
-            refreshScrollSpy();
+            // 5. Refresh ScrollSpy
+            if (bootstrap.ScrollSpy) {
+                const dataSpyEl = document.querySelector('[data-bs-spy="scroll"]');
+                if (dataSpyEl) bootstrap.ScrollSpy.getInstance(dataSpyEl)?.refresh();
+            }
 
         } catch (error) {
             console.error("Error:", error);
-            contentArea.innerHTML = `
-                <div class="alert alert-danger text-center">
-                    <h4>Unable to load products</h4>
-                    <p>Please ensure the backend is running at ${API_BASE}</p>
-                    <small>${error.message}</small>
-                </div>`;
+            contentArea.innerHTML = `<div class="alert alert-danger text-center">Unable to load products. API Error.</div>`;
         }
     }
 
-    // --- Helper: Modal Handler ---
+    // --- Modal Logic ---
     const productModal = document.getElementById('productModal');
     if (productModal) {
         productModal.addEventListener('show.bs.modal', function (event) {
-            // Button that triggered the modal
             const button = event.relatedTarget;
-            
-            // Extract info from data-* attributes
             const title = button.getAttribute('data-title');
             const desc = button.getAttribute('data-desc');
             const img = button.getAttribute('data-img');
 
-            // Update the modal's content
             productModal.querySelector('#modal-product-name').textContent = title;
             productModal.querySelector('#modal-product-description').textContent = desc || "No details available.";
             productModal.querySelector('#modal-product-image').src = img;
         });
-    }
-
-    // --- Helper: Refresh Bootstrap ScrollSpy ---
-    function refreshScrollSpy() {
-        const dataSpyEl = document.querySelector('[data-bs-spy="scroll"]');
-        if (dataSpyEl && bootstrap.ScrollSpy) {
-            const spy = bootstrap.ScrollSpy.getInstance(dataSpyEl);
-            if (spy) spy.refresh();
-        }
     }
 });
