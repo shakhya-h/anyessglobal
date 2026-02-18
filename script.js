@@ -251,7 +251,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     // 🚨 CONFIG: Backend URL
-    const API_BASE = "http://localhost:8080/api/public";
+    // NEW (Cloud)
+    const API_BASE = "https://cms-backend-wj8q.onrender.com/api/public";
 
     // --- 1. Footer Year ---
     const yearSpan = document.getElementById('currentYear');
@@ -441,3 +442,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
