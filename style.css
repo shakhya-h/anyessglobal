@@ -1,25 +1,25 @@
 /* -------------------------
    Variables & Basic Setup
    ------------------------- */
-:root {
+/* :root {
     --primary-color: #0d6efd; /* Bootstrap Blue */
-    --secondary-color: #6c757d;
+    /* --secondary-color: #6c757d;
     --light-gray: #f8f9fa;
     --dark-blue: #0A2342;
     --text-color: #333;
-}
+} */
 
-body {
+/* body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
     line-height: 1.7;
     padding-top: 70px; /* Offset for fixed navbar */
-}
+/* } */ 
 
 /* -------------------------
    Typography & Links
    ------------------------- */
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
@@ -55,43 +55,43 @@ a {
 
 a:hover {
     color: #0a58ca;
-}
+} */
 
 /* -------------------------
    Navbar
    ------------------------- */
-.navbar-brand {
+/* .navbar-brand {
     font-size: 1.5rem;
     color: var(--dark-blue) !important;
-}
+} */
 
-.nav-link {
+/* .nav-link {
     font-weight: 400;
     transition: color 0.3s ease;
 }
 
 .nav-link:hover, .nav-link.active {
     color: var(--primary-color) !important;
-}
+} */
 
 /* -------------------------
    Hero Section
    ------------------------- */
-.hero-section {
+/* .hero-section {
     height: 100vh; /* Fullscreen hero */
-    position: relative;
+    /* position: relative;
     overflow: hidden;
-}
+} */
 
-.hero-section img {
+/* .hero-section img {
     object-fit: cover;
     height: 100%;
     width: 100%;
     display: block;
-}
+} */ 
 
 /* Fullscreen caption overlay, vertically & horizontally centered */
-.carousel-caption {
+/* .carousel-caption {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -105,10 +105,10 @@ a:hover {
     padding: 0 15px;
     z-index: 2;
     background: rgba(0, 0, 0, 0.3); /* Optional overlay for readability */
-}
+} */
 
 /* Hero text animations */
-.hero-section h1 {
+/* .hero-section h1 {
     animation: slideInUp 1s ease-out 0.5s forwards;
     opacity: 0;
     animation-fill-mode: forwards;
@@ -119,10 +119,10 @@ a:hover {
     animation: slideInUp 1s ease-out 0.8s forwards;
     opacity: 0;
     animation-fill-mode: forwards;
-}
+} */
 
 /* Responsive text sizes */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .carousel-caption h1 {
         font-size: 2rem;
     }
@@ -133,12 +133,12 @@ a:hover {
         font-size: 0.9rem;
         padding: 0.6rem 1.2rem;
     }
-}
+} */
 
 /* -------------------------
    Products & Services Cards
    ------------------------- */
-.service-card {
+/* .service-card {
     border: none;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -164,12 +164,12 @@ a:hover {
 .service-card:hover .icon-circle {
     background-color: var(--primary-color);
     color: #fff;
-}
+} */
 
 /* -------------------------
    Partners Section
    ------------------------- */
-.partner-logo {
+/* .partner-logo {
     max-width: 150px;
     filter: grayscale(100%);
     opacity: 0.7;
@@ -180,12 +180,12 @@ a:hover {
     filter: grayscale(0%);
     opacity: 1;
     transform: scale(1.1);
-}
+} */
 
 /* -------------------------
    Contact Section
    ------------------------- */
-.contact-info a {
+/* .contact-info a {
     color: var(--text-color);
 }
 
@@ -210,12 +210,12 @@ a:hover {
 .form-control:focus {
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
     border-color: var(--primary-color);
-}
+} */
 
 /* -------------------------
    Footer
    ------------------------- */
-footer {
+/* footer {
     background-color: var(--dark-blue);
 }
 
@@ -227,17 +227,17 @@ footer {
 
 .footer-link:hover {
     color: #fff;
-}
+} */
 
 /* -------------------------
    Animations
    ------------------------- */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
+} */
 
-@keyframes slideInUp {
+/* @keyframes slideInUp {
     from {
         transform: translateY(50px);
         opacity: 0;
@@ -246,4 +246,195 @@ footer {
         transform: translateY(0);
         opacity: 1;
     }
+} */
+
+/* -------------------------
+   Variables & Basic Setup
+   ------------------------- */
+:root {
+    --primary-color: #0d6efd; /* Bootstrap Blue */
+    --secondary-color: #6c757d;
+    --light-gray: #f8f9fa;
+    --dark-blue: #0A2342;
+    --text-color: #333;
 }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.7;
+    padding-top: 70px;
+}
+
+/* -------------------------
+   Typography & Links
+   ------------------------- */
+h1, h2, h3, h4, h5, h6 { font-weight: 600; }
+
+.section-title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 3px;
+    background-color: var(--primary-color);
+}
+
+section#about .section-title::after,
+section#contact .section-title::after {
+    left: 0; transform: translateX(0);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover { color: #0a58ca; }
+
+/* -------------------------
+   Navbar
+   ------------------------- */
+.navbar-brand { font-size: 1.5rem; color: var(--dark-blue) !important; }
+.nav-link { font-weight: 400; transition: color 0.3s ease; }
+.nav-link:hover, .nav-link.active { color: var(--primary-color) !important; }
+
+/* -------------------------
+   Hero Section
+   ------------------------- */
+.hero-section { height: 100vh; position: relative; overflow: hidden; }
+.hero-section img { object-fit: cover; height: 100%; width: 100%; display: block; }
+.hero-section::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); z-index: 1;
+}
+
+.carousel-caption {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center; width: 100%; padding: 0 15px;
+    z-index: 2;
+}
+
+/* -------------------------
+   Cards & Layout
+   ------------------------- */
+.service-card {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.icon-circle {
+    width: 70px; height: 70px;
+    background-color: #EBF4FF;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.service-card:hover .icon-circle {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* -------------------------
+   SIDEBAR FIX (Added this for you)
+   ------------------------- */
+.sidebar-nav {
+    position: sticky;
+    top: 100px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.sidebar-nav .nav-link {
+    color: #495057;
+    font-weight: 500;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar-nav .nav-link:hover {
+    background-color: #e9ecef;
+    color: #0d6efd;
+    transform: translateX(5px);
+}
+
+.sidebar-nav .nav-link.active {
+    background-color: #0d6efd;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.3);
+}
+
+/* -------------------------
+   Partners Section (Slider)
+   ------------------------- */
+.logo-slider {
+    overflow: hidden; padding: 40px 0;
+    background: white; position: relative; width: 100%;
+}
+.logo-slider::before, .logo-slider::after {
+    content: ""; position: absolute; top: 0; width: 200px; height: 100%; z-index: 2;
+}
+.logo-slider::before { left: 0; background: linear-gradient(to left, rgba(255, 255, 255, 0), white); }
+.logo-slider::after { right: 0; background: linear-gradient(to right, rgba(255, 255, 255, 0), white); }
+
+.logo-track {
+    display: flex; width: calc(250px * 12);
+    animation: scroll 40s linear infinite;
+}
+.logo-track:hover { animation-play-state: paused; }
+
+.logo-slide {
+    height: 120px; width: 250px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; flex-shrink: 0;
+}
+.logo-slide img {
+    max-height: 100%; max-width: 100%; object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.logo-slide img:hover { transform: scale(1.1); }
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 6)); }
+}
+
+/* -------------------------
+   Contact & Footer
+   ------------------------- */
+.icon-circle-sm {
+    width: 50px; height: 50px;
+    background-color: #EBF4FF; color: var(--primary-color);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.form-control { border-radius: 0.25rem; padding: 0.75rem 1rem; border: 1px solid #ced4da; }
+.form-control:focus { box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); border-color: var(--primary-color); }
+
+footer { background-color: var(--dark-blue); }
+.footer-link { color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.3s; }
+.footer-link:hover { color: #fff; }
+
