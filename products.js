@@ -236,8 +236,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     // 🚨 CONFIG: Backend URL
-    const API_BASE = "http://localhost:8080/api/public"; 
-
+    // const API_BASE = "http://localhost:8080/api/public"; 
+    const API_BASE_URL = "https://cms-backend-wj8q.onrender.com";
     fetchAndRenderCatalog();
 
     async function fetchAndRenderCatalog() {
